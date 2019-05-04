@@ -1,7 +1,7 @@
 # Multivariate Statistical Analysis
 
 <p align="center"> 
-  <img https://github.com/Xiaozhu-Zhang1998/Multivariate-Analysis/blob/test/Cover.png  width="100" height="50"> 
+  <img src=https://github.com/Xiaozhu-Zhang1998/Multivariate-Analysis/blob/test/Cover.png  width="100" height="50"> 
   <p align="center"> 
     <em></em> 
   </p> 
