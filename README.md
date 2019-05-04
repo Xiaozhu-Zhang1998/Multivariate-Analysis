@@ -1,6 +1,6 @@
 # Multivariate Statistical Analysis
 
-<img src="https://github.com/Xiaozhu-Zhang1998/Multivariate-Analysis/blob/test/Cover.png"  width="350" height="200"> 
+<img src="https://github.com/Xiaozhu-Zhang1998/Multivariate-Analysis/blob/test/Cover.png"  width="500" height="400"> 
 
 
 The introduction and R codes of major methods of Multivariate Statistical Analysis, including Cluster, Discriminant Analysis, PCA, etc. The materials and datasets are totally based on the textbook *Multivariate Statistical Analysis* (Xiaoqun He, 3rd edition, China Renmin University Press). All files on this repository were written when I took ST05003 in Hunan University, and therefore could be used as a supplementary materials for similar courses.  **All files are written in Chinese.**
