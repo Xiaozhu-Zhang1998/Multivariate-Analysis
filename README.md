@@ -1,1 +1,1 @@
-# Multivariate-Analysis
+The introduction and R codes of major methods of Multivariate Statistical Analysis, including Cluster, Discriminant Analysis, PCA, etc. The materials and dataset are totally based on the textbook Multivariate Statistical Analysis (Xiaoqun He, 3rd edition, China Renmin University Press).
