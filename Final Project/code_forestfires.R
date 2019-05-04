@@ -1,9 +1,9 @@
-#¶ÁÈ¡Êı¾İ
-setwd("C:\\Users\\Ğ¡Öñ×Ó\\Documents\\Multivariate Statistical Analysis\\ÆÚÄ©ÂÛÎÄ")
+#è¯»å–æ•°æ®
+setwd("C:\\Users\\å°ç«¹å­\\Documents\\Multivariate Statistical Analysis\\æœŸæœ«è®ºæ–‡")
 data=read.csv("forestfires.csv")
 head(data,5)
 attach(data)
-#---×ø±ê±äÁ¿,ËµÃ÷¹Û²âµã·Ö²¼½ÏÎª¾ùÔÈ,Êı¾İ¾ßÓĞËµ·şÁ¦---#
+#---åæ ‡å˜é‡,è¯´æ˜è§‚æµ‹ç‚¹åˆ†å¸ƒè¾ƒä¸ºå‡åŒ€,æ•°æ®å…·æœ‰è¯´æœåŠ›---#
 #--------------------------------------------------
 #--------------------------------------------------
 #--------------------------------------------------
@@ -15,15 +15,15 @@ ggplot(position,aes(x = X, y = Y))+
   scale_x_continuous(breaks=seq(1,9,1))+
   scale_y_continuous(breaks=seq(2,9,1))
 
-#---1. ¶Ôarea½øĞĞ·ÖÀà---#
+#---1. å¯¹areaè¿›è¡Œåˆ†ç±»---#
 #--------------------------------------------------
 #--------------------------------------------------
 #--------------------------------------------------
-#Ïë·¨,boxplot
+#æƒ³æ³•,boxplot
 ggplot(data,aes(x=area))+geom_histogram()
 #code
 A=sort(area)
-k=1.5 #Éè¶¨ÁÙ½çÖµ
+k=1.5 #è®¾å®šä¸´ç•Œå€¼
 cluster=c()
 type=1
 start=1
@@ -53,7 +53,7 @@ ggplot(data,aes(x=as.factor(degree),y=area))+
   geom_boxplot()+
   labs(x = "degree", y = "area")
 
-#---2. µäĞÍÏà¹Ø·ÖÎö---#
+#---2. å…¸å‹ç›¸å…³åˆ†æ---#
 #--------------------------------------------------
 #--------------------------------------------------
 #--------------------------------------------------
@@ -61,7 +61,7 @@ data.X=data[,5:8]
 data.Y=data[,9:12]
 can=cancor(data.X,data.Y)
 can$cor
-#Ğò¹á¼ìÑé
+#åºè´¯æ£€éªŒ
 cor.test<-function(X,Y,alpha){
   n=nrow(X)
   p=ncol(X)
@@ -84,26 +84,26 @@ cor.test<-function(X,Y,alpha){
   return(list("count"=count,"Q-statistics"=QSTA,"pvalue"=PVAL))
 }
 cor.test(data.X,data.Y,alpha=0.05)
-#¼ÆËãU,V
+#è®¡ç®—U,V
 can$xcoef
 can$ycoef
 U=as.matrix(data.X)%*%as.matrix(can$xcoef[,1:3])
 colnames(U)=paste("U",1:3,sep="")
 V=as.matrix(data.Y)%*%as.matrix(can$ycoef[,1:3])
 colnames(V)=paste("V",1:3,sep="")
-#µäĞÍÔØºÉ
+#å…¸å‹è½½è·
 cor(data.X,U)
 cor(data.Y,V)
 
-#---3. ¶ÔÓ¦·ÖÎö---#
+#---3. å¯¹åº”åˆ†æ---#
 #--------------------------------------------------
 #--------------------------------------------------
 #--------------------------------------------------
 t=table(month,degree)
 t
-#ĞĞÆÊÃæ
+#è¡Œå‰–é¢
 addmargins(prop.table(t,1),2)
-tmonth=c() #ĞĞÆÊÃæ×÷Í¼
+tmonth=c() #è¡Œå‰–é¢ä½œå›¾
 tD=c()
 freq=c()
 pt=prop.table(t,1)
@@ -118,18 +118,18 @@ ggplot(data.frame(month=tmonth,degree=tD,percentage=freq),
        aes(month,percentage,fill=degree))+
   geom_bar(stat="identity",position="fill")
 
-#ÁĞÆÊÃæ
+#åˆ—å‰–é¢
 addmargins(prop.table(t,2),1)
-ggplot(data.frame(month=tmonth,degree=tD,percentage=freq), #ÁĞÆÊÃæ×÷Í¼
+ggplot(data.frame(month=tmonth,degree=tD,percentage=freq), #åˆ—å‰–é¢ä½œå›¾
        aes(degree,percentage,fill=month))+
   geom_bar(stat="identity",position="fill")
 
-#¶ÔÓ¦·ÖÎö
+#å¯¹åº”åˆ†æ
 library(ca)
 ca.month=ca(table(month,degree))
 plot(ca.month)
 
-#---3.1 ¶ÔÊıÏßĞÔÄ£ĞÍ---#
+#---3.1 å¯¹æ•°çº¿æ€§æ¨¡å‹---#
 #--------------------------------------------------
 #--------------------------------------------------
 #--------------------------------------------------
@@ -156,13 +156,13 @@ logmol=loglm(~weekend*serious,table(day.test))
 logmol$param
 
 
-#---4. ÅĞ±ğ·ÖÎö(¾àÀëÅĞ±ğ·¨)---#
+#---4. åˆ¤åˆ«åˆ†æ(è·ç¦»åˆ¤åˆ«æ³•)---#
 #--------------------------------------------------
 #--------------------------------------------------
 #--------------------------------------------------
 r=4
-#×Ó×ÜÌå
-#½«4¡¢5¡¢6½øĞĞºÏ²¢(ÒòÎªÑù±¾ÊıÁ¿¹ıÉÙ)
+#å­æ€»ä½“
+#å°†4ã€5ã€6è¿›è¡Œåˆå¹¶(å› ä¸ºæ ·æœ¬æ•°é‡è¿‡å°‘)
 G1 <- subset(data,degree==1)
 G2 <- subset(data,degree==2)
 G3 <- subset(data,degree==3)
@@ -174,9 +174,9 @@ n2=nrow(G2)
 n3=nrow(G3)
 n4=nrow(G4)
 n=n1+n2+n3+n4
-#ÅĞ¶ÏĞ­·½²îÕóÊÇ·ñÍ¬ÖÊ
-cov.test <- function(p,nr){ #ÊäÈëc(¼ìÑé±äÁ¿¸öÊı,¼ìÑé±äÁ¿±àºÅ(ÏòÁ¿))
-  #¹¹ÔìMÍ³¼ÆÁ¿
+#åˆ¤æ–­åæ–¹å·®é˜µæ˜¯å¦åŒè´¨
+cov.test <- function(p,nr){ #è¾“å…¥c(æ£€éªŒå˜é‡ä¸ªæ•°,æ£€éªŒå˜é‡ç¼–å·(å‘é‡))
+  #æ„é€ Mç»Ÿè®¡é‡
   L1=(n1-1)*cov(G1[,nr])
   L2=(n2-1)*cov(G2[,nr])
   L3=(n3-1)*cov(G3[,nr])
@@ -188,7 +188,7 @@ cov.test <- function(p,nr){ #ÊäÈëc(¼ìÑé±äÁ¿¸öÊı,¼ìÑé±äÁ¿±àºÅ(ÏòÁ¿))
   B3=(n3-1)*log(det(L3/(n3-1)))
   B4=(n4-1)*log(det(L4/(n4-1)))
   M=A-B1-B2-B3-B4
-  #Ñ°ÕÒ·Ö²¼
+  #å¯»æ‰¾åˆ†å¸ƒ
   if(n1==n2 && n2==n3 && n3==n4){
     d1=(2*p^2+3*p-1)*(r-1)/(6*(p+1)*r*(n-1)) 
     d2=(p-1)*(p+2)*(r^2+r+1)/(6*r^2*(n-1)^2)
@@ -206,8 +206,8 @@ cov.test <- function(p,nr){ #ÊäÈëc(¼ìÑé±äÁ¿¸öÊı,¼ìÑé±äÁ¿±àºÅ(ÏòÁ¿))
 }
 #test
 cov.test(4,5:8)
-#Òò´Ë²ÉÓÃ·½²î²»µÈ¼ÆËã
-#¼ÆËãĞ­·½²îÕóºÍ¾ùÖµÏòÁ¿
+#å› æ­¤é‡‡ç”¨æ–¹å·®ä¸ç­‰è®¡ç®—
+#è®¡ç®—åæ–¹å·®é˜µå’Œå‡å€¼å‘é‡
 S1=cov(G1[,5:8])
 S2=cov(G2[,5:8])
 S3=cov(G3[,5:8])
@@ -217,7 +217,7 @@ m1=colMeans(G1[,5:8])
 m2=colMeans(G2[,5:8])
 m3=colMeans(G3[,5:8])
 m4=colMeans(G4[,5:8])
-#Ô¤²â¼°»ØÅĞ
+#é¢„æµ‹åŠå›åˆ¤
 d1=c()
 for (i in 1:nrow(data)){
   dis1=as.matrix(data[i,5:8]-m1)%*%as.matrix(solve(S1))%*%as.matrix(t(data[i,5:8]-m1))
@@ -238,7 +238,7 @@ for (i in 1:nrow(data)){
   dis4=as.matrix(data[i,5:8]-m4)%*%as.matrix(solve(S4))%*%as.matrix(t(data[i,5:8]-m4))
   d4=c(d4,dis4)
 }
-#½á¹ûÕûÀí
+#ç»“æœæ•´ç†
 D1=c()
 dist=c()
 for(i in 1:nrow(data)){
@@ -256,7 +256,7 @@ for(i in 1:nrow(data)){
   }
   dist=c(dist,min(d1[i],d2[i],d3[i],d4[i]))
 }
-#¼ÆËã¾«¶È
+#è®¡ç®—ç²¾åº¦
 ndegree=c()
 for(i in 1:nrow(data)){
   if(degree[i]==1 || degree[i]==2 || degree[i]==3){
@@ -268,11 +268,11 @@ for(i in 1:nrow(data)){
 table(ndegree,D1)
 sum(diag(prop.table(table(ndegree,D1))))
 
-#---5. Ñ°ÕÒ¾«¶È½ÏµÍµÄÔ­Òò---#
+#---5. å¯»æ‰¾ç²¾åº¦è¾ƒä½çš„åŸå› ---#
 #--------------------------------------------------
 #--------------------------------------------------
 #--------------------------------------------------
-#1. ÕıÌ¬·Ö²¼
+#1. æ­£æ€åˆ†å¸ƒ
 library(mvnormtest)
 Glist=list(G1,G2,G3,G4)
 W=c()
@@ -286,7 +286,7 @@ MNtest<-data.frame(W,P.value)
 rownames(MNtest)=paste("G",1:4,sep="")
 MNtest
 
-#ÈçºÎ¸Ä½ø£¿
+#å¦‚ä½•æ”¹è¿›ï¼Ÿ
 ld=lda(ndegree~FFMC+DMC+DC+ISI,data)
 new=predict(ld)
 t2=table(ndegree,new$class)
@@ -304,7 +304,6 @@ sum(diag(prop.table(t3)))
 #--------------------------------------------------
 #--------------------------------------------------
 #--------------------------------------------------
-#-------------------Õâ¸ö±È½Ï¿¿Æ×--------------------------------------------
 data=cbind(data,ndegree,D1)
 dd=subset(data,D1==1)
 Glist=list(subset(data,ndegree==1),
