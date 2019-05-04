@@ -12,4 +12,7 @@ ________________________________________________
 * Chapter 8 - Canonical Correlation Analysis
 * Chpater 9 - Linear Models
 
-For every chapter, there will be a .html written with R Markdown, giving specific examples to analyze datasets with corresponding methods. A .pdf format is also given for those who are not convenient to read .html. Datasets are given in .csv format.
+For every chapter, there will be a html written with R Markdown, giving specific examples to analyze datasets with corresponding methods. A pdf format is also given for those who are not convenient to read html. Datasets are given in csv format.
+
+## Textbooks
+![Textbook](https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=8c24a310d709b3deffb2ec3aadd607e4/dbb44aed2e738bd46976b649a78b87d6277ff977.jpg)
