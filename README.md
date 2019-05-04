@@ -18,7 +18,7 @@ ________________________________________________
 For every chapter, there will be a html written with R Markdown, giving specific examples to analyze datasets with corresponding methods. A pdf format is also given for those who are not convenient to read html. Datasets are given in csv format.
 
 ## Textbooks
-**21世纪统计学系列教材·多元统计分析**
+**21世纪统计学系列教材·多元统计分析**  
 Arthor: 何晓群  
 Edition: 3  
 Publisher: 中国人民大学出版社  
