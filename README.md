@@ -14,6 +14,7 @@ ________________________________________________
 * Chapter 7 - Correspondence Analysis
 * Chapter 8 - Canonical Correlation Analysis
 * Chpater 9 - Linear Models
+* Final Project - Forest Fires
 
 For every chapter, there will be a html written with R Markdown, giving specific examples to analyze datasets with corresponding methods. A pdf format is also given for those who are not convenient to read html. Datasets are given in csv format.
 
