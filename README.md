@@ -28,3 +28,5 @@ ISBN: 9787300096438
 
 <img src="https://gss2.bdstatic.com/9fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=8c24a310d709b3deffb2ec3aadd607e4/dbb44aed2e738bd46976b649a78b87d6277ff977.jpg"  width="220" height="300"> 
 
+## Author(s)
+Xiaozhu Zhang - [GitHub](https://github.com/Xiaozhu-Zhang1998)
