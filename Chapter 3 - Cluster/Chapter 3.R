@@ -1,17 +1,19 @@
-## ¼ÓÔØÊı¾İ
+## Chapter 3
+
+## åŠ è½½æ•°æ®
 X=read.table("clipboard",header=T)
 rownames(X)=X[,1]
 X=X[,-1]
 
 ## ---------------------------------------------------------
-## ÏµÍ³¾ÛÀà·¨
+## ç³»ç»Ÿèšç±»æ³•
 ## ---------------------------------------------------------
-## º¯ÊıµÄ·â×°
-H.clust <- function(X,d,m,gmin,gmax,ind){ #ÊäÈëÏòÁ¿c(Êı¾İ¼¯X,"¾àÀëÖÖÀà","¾ÛÀà·½·¨",ÔÊĞí×îĞ¡ÀàÊı,ÔÊĞí×î´óÀàÊı,"·ÖÀàÖ¸±ê")
+## å‡½æ•°çš„å°è£…
+H.clust <- function(X,d,m,gmin,gmax,ind){ #è¾“å…¥å‘é‡c(æ•°æ®é›†X,"è·ç¦»ç§ç±»","èšç±»æ–¹æ³•",å…è®¸æœ€å°ç±»æ•°,å…è®¸æœ€å¤§ç±»æ•°,"åˆ†ç±»æŒ‡æ ‡")
   X.scaled <- scale(X)
   dis <- dist(X.scaled,method=d)
   hc <- hclust(dis,method=m)
-  #Ñ°ÕÒ×î¼Ñ¾ÛÀàÊı
+  #å¯»æ‰¾æœ€ä½³èšç±»æ•°
   library(NbClust)
   devAskNewPage(ask=FALSE)
   nc <- NbClust(X.scaled,distance=d,min.nc=gmin,max.nc=gmax,method=m,index=ind)
@@ -19,7 +21,7 @@ H.clust <- function(X,d,m,gmin,gmax,ind){ #ÊäÈëÏòÁ¿c(Êı¾İ¼¯X,"¾àÀëÖÖÀà","¾ÛÀà·½·
   tframe <- as.data.frame(t)
   tframe1 <- tframe[which(tframe$Freq==max(t)),]
   k0=as.numeric(as.character(tframe1$Var1))[1]
-  #½á¹ûÊä³ö
+  #ç»“æœè¾“å‡º
   clusters <- cutree(hc,k=k0)
   par(mfrow=c(1,1))
   barplot(t,xlab="Number of Clusters",ylab="Number of Criteria",main="Clusters Chosen")
@@ -29,40 +31,40 @@ H.clust <- function(X,d,m,gmin,gmax,ind){ #ÊäÈëÏòÁ¿c(Êı¾İ¼¯X,"¾àÀëÖÖÀà","¾ÛÀà·½·
 }
 
 
-## RĞÍ¾ÛÀà
+## Rå‹èšç±»
 X1=t(X)
 H.clust(X1,"euclidean","average",2,7,c("silhouette","gap"))
 
 
-## QĞÍ¾ÛÀà
-## ×î¶Ì¾àÀë·¨
+## Qå‹èšç±»
+## æœ€çŸ­è·ç¦»æ³•
 H.clust(X,"euclidean","single",2,7,"all")
 
-## ×î³¤¾àÀë·¨
+## æœ€é•¿è·ç¦»æ³•
 H.clust(X,"euclidean","complete",2,7,"all")
 
-## ÖØĞÄ·¨
+## é‡å¿ƒæ³•
 H.clust(X,"euclidean","centroid",2,7,"all")
 
-## ÀàÆ½¾ù·¨
+## ç±»å¹³å‡æ³•
 H.clust(X,"euclidean","average",2,7,"all")
 
-## Ward·¨
+## Wardæ³•
 H.clust(X,"euclidean","ward.D",2,7,"all")
 
 
 
 ## ---------------------------------------------------------
-## K-Means¾ÛÀà·¨
+## K-Meansèšç±»æ³•
 ## ---------------------------------------------------------
-## È·¶¨¾ÛÀàÊıÄ¿
+## ç¡®å®šèšç±»æ•°ç›®
 library(ggplot2)
 library(factoextra)
 df <- scale(X)
 fviz_nbclust(df, kmeans, method = "wss") + geom_vline(xintercept = 3, linetype = 2)
 
 
-## ½øĞĞ¾ÛÀà
+## è¿›è¡Œèšç±»
 set.seed(123)
 km <- kmeans(df,3)
 km$centers
@@ -83,21 +85,21 @@ fviz_cluster(km, data = df,
 
 
 ## ---------------------------------------------------------
-## Ä£ºı¾ÛÀà·¨
+## æ¨¡ç³Šèšç±»æ³•
 ## ---------------------------------------------------------
-## ¶ÁÈëÊı¾İ
+## è¯»å…¥æ•°æ®
 Y=read.csv("eg3-7.csv")
 Y1=Y
 rownames(Y1)=Y1[,1]
 Y1=Y1[,-1]
 Y1=Y1[,-1]
 
-## ½øĞĞ¾ÛÀà
+## è¿›è¡Œèšç±»
 library(cluster)
 fannyz=fanny(Y1,3,metric="SqEuclidean")
-list("·ÖÀà·Ö²¼"=fannyz$clustering,"Ñù±¾Á¥Êô¶È"=fannyz$membership)
+list("åˆ†ç±»åˆ†å¸ƒ"=fannyz$clustering,"æ ·æœ¬éš¶å±åº¦"=fannyz$membership)
 
-## ÌáÉıÊÓ¾õĞ§¹û
+## æå‡è§†è§‰æ•ˆæœ
 clusplot(fannyz)
 library(e1071)
 result1<-cmeans(Y1,3,50)
@@ -105,6 +107,6 @@ library(scatterplot3d)
 scatterplot3d(result1$membership, color=result1$cluster, type="h", 
               angle=55, scale.y=0.7, pch=16, main="Pertinence")
 
-## ¼ÆËãÕıÈ·ÂÊ
+## è®¡ç®—æ­£ç¡®ç‡
 t=table(Y[,2],fannyz$clustering)
 sum(diag(prop.table(t)))
