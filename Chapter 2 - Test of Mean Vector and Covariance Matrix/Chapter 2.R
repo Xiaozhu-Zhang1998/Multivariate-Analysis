@@ -1,9 +1,11 @@
-## ¼ÓÔØÊý¾Ý
+## Chapter 2
+
+## åŠ è½½æ•°æ®
 X=read.table("clipboard",header=T)
 ## ----------------------------------------
 library(mvnormtest)
 
-## ¼ìÑéÃ¿Ò»¸ö±äÁ¿ÊÇ·ñ·þ´ÓÕýÌ¬·Ö²¼
+## æ£€éªŒæ¯ä¸€ä¸ªå˜é‡æ˜¯å¦æœä»Žæ­£æ€åˆ†å¸ƒ
 par(mfrow=c(4,2))
 for(i in 4:11){
   k1=mshapiro.test(t(X[,i]))
@@ -13,11 +15,11 @@ for(i in 4:11){
   }
 }
 
-## ¶ÔÓÚ·þ´ÓÕýÌ¬·Ö²¼µÄµ¥¸ö±äÁ¿£¬¼ìÑéÆäÏòÁ¿ÊÇ·ñ·þ´ÓÕýÌ¬·Ö²¼
+## å¯¹äºŽæœä»Žæ­£æ€åˆ†å¸ƒçš„å•ä¸ªå˜é‡ï¼Œæ£€éªŒå…¶å‘é‡æ˜¯å¦æœä»Žæ­£æ€åˆ†å¸ƒ
 mshapiro.test(t(X[,c(4,5,6,10)]))
-## 4¸ö·ÖÁ¿¹¹³ÉµÄÏòÁ¿²»·þ´ÓÕýÌ¬·Ö²¼
+## 4ä¸ªåˆ†é‡æž„æˆçš„å‘é‡ä¸æœä»Žæ­£æ€åˆ†å¸ƒ
 
-## ¼ìÑé3¸ö·ÖÁ¿¹¹³ÉµÄÏòÁ¿ÊÇ·ñ·þ´ÓÕýÌ¬·Ö²¼
+## æ£€éªŒ3ä¸ªåˆ†é‡æž„æˆçš„å‘é‡æ˜¯å¦æœä»Žæ­£æ€åˆ†å¸ƒ
 for(i in c(4,5,6,10)){
   for(j in c(5,6,10)){
     for(k in c(6,10)){
@@ -31,35 +33,35 @@ for(i in c(4,5,6,10)){
   }
 }
 
-## µÃµ½ÁËÁ½×éÏòÁ¿£¬·þ´ÓÕýÌ¬·Ö²¼
+## å¾—åˆ°äº†ä¸¤ç»„å‘é‡ï¼Œæœä»Žæ­£æ€åˆ†å¸ƒ
 
 ## ----------------------------------------
-## ½øÐÐ·½²îÆëÐÔ¼ìÑé(×Ô±à³ÌÐò)
+## è¿›è¡Œæ–¹å·®é½æ€§æ£€éªŒ(è‡ªç¼–ç¨‹åº)
 
 ## attach(X)
 r=3
-G1 <- subset(X,"ÐÐÒµ"=="µçÁ¦¡¢ÃºÆø¼°Ë®µÄÉú²úºÍ¹©Ó¦Òµ")
-G2 <- subset(X,"ÐÐÒµ"=="·¿µØÐÐÒµ")
-G3 <- subset(X,"ÐÐÒµ"=="ÐÅÏ¢¼¼ÊõÒµ")
+G1 <- subset(X,"è¡Œä¸š"=="ç”µåŠ›ã€ç…¤æ°”åŠæ°´çš„ç”Ÿäº§å’Œä¾›åº”ä¸š")
+G2 <- subset(X,"è¡Œä¸š"=="æˆ¿åœ°è¡Œä¸š")
+G3 <- subset(X,"è¡Œä¸š"=="ä¿¡æ¯æŠ€æœ¯ä¸š")
 n1=nrow(G1)
 n2=nrow(G2)
 n3=nrow(G3)
 n=n1+n2+n3
 
-cov.test <- function(p,nr){ #ÊäÈëc(¼ìÑé±äÁ¿¸öÊý,¼ìÑé±äÁ¿±àºÅ(ÏòÁ¿))
+cov.test <- function(p,nr){ #è¾“å…¥c(æ£€éªŒå˜é‡ä¸ªæ•°,æ£€éªŒå˜é‡ç¼–å·(å‘é‡))
   nr=nr+3
   L1=(n1-1)*cov(G1[,nr])
   L2=(n2-1)*cov(G2[,nr])
   L3=(n3-1)*cov(G3[,nr])
   L=L1+L2+L3
   
-  ## ¹¹ÔìMÍ³¼ÆÁ¿
+  ## æž„é€ Mç»Ÿè®¡é‡
   A=(n-r)*log(exp(1),det(L/(n-r)))
   B1=(n1-1)*log(exp(1),det(L1/(n1-1)))
   B2=(n2-1)*log(exp(1),det(L2/(n2-1)))
   B3=(n3-1)*log(exp(1),det(L3/(n3-1)))
   M=A-B1-B2-B3
-  ## Ñ°ÕÒ·Ö²¼
+  ## å¯»æ‰¾åˆ†å¸ƒ
   if(n1==n2 && n2==n3){
     d1=(2*p^2+3*p-1)*(r-1)/(6*(p+1)*r*(n-1)) 
     d2=(p-1)*(p+2)*(r^2+r+1)/(6*r^2*(n-1)^2)
@@ -82,48 +84,48 @@ cov.test(3,c(1,2,3))
 cov.test(3,c(1,3,7))
 
 ## ----------------------------------------
-## ·½²î·ÖÎö
-## ¶àÔª·½²î·ÖÎö
+## æ–¹å·®åˆ†æž
+## å¤šå…ƒæ–¹å·®åˆ†æž
 attach(X)
-aggregate(cbind(¾»×Ê²úÊÕÒæÂÊ,×Ü×Ê²ú±¨³êÂÊ,×Ê²ú¸ºÕ®ÂÊ,ÏúÊÛÔö³¤ÂÊ),by=list(ÐÐÒµ),FUN=mean)
+aggregate(cbind(å‡€èµ„äº§æ”¶ç›ŠçŽ‡,æ€»èµ„äº§æŠ¥é…¬çŽ‡,èµ„äº§è´Ÿå€ºçŽ‡,é”€å”®å¢žé•¿çŽ‡),by=list(è¡Œä¸š),FUN=mean)
 
-y.1 <- as.data.frame(cbind(ÐÐÒµ,¾»×Ê²úÊÕÒæÂÊ,×Ü×Ê²ú±¨³êÂÊ,×Ê²ú¸ºÕ®ÂÊ))
-type1 <- as.factor(y.1$ÐÐÒµ)
-fit1 <- manova(cbind(¾»×Ê²úÊÕÒæÂÊ,×Ü×Ê²ú±¨³êÂÊ,×Ê²ú¸ºÕ®ÂÊ)~type1,data=y.1)
+y.1 <- as.data.frame(cbind(è¡Œä¸š,å‡€èµ„äº§æ”¶ç›ŠçŽ‡,æ€»èµ„äº§æŠ¥é…¬çŽ‡,èµ„äº§è´Ÿå€ºçŽ‡))
+type1 <- as.factor(y.1$è¡Œä¸š)
+fit1 <- manova(cbind(å‡€èµ„äº§æ”¶ç›ŠçŽ‡,æ€»èµ„äº§æŠ¥é…¬çŽ‡,èµ„äº§è´Ÿå€ºçŽ‡)~type1,data=y.1)
 summary(fit1,test=c("Wilks"))
 
-y.2 <- as.data.frame(cbind(ÐÐÒµ,¾»×Ê²úÊÕÒæÂÊ,×Ê²ú¸ºÕ®ÂÊ,ÏúÊÛÔö³¤ÂÊ))
-type2 <- as.factor(y.2$ÐÐÒµ)
-fit2 <- manova(cbind(¾»×Ê²úÊÕÒæÂÊ,×Ê²ú¸ºÕ®ÂÊ,ÏúÊÛÔö³¤ÂÊ)~type2,data=y.2)
+y.2 <- as.data.frame(cbind(è¡Œä¸š,å‡€èµ„äº§æ”¶ç›ŠçŽ‡,èµ„äº§è´Ÿå€ºçŽ‡,é”€å”®å¢žé•¿çŽ‡))
+type2 <- as.factor(y.2$è¡Œä¸š)
+fit2 <- manova(cbind(å‡€èµ„äº§æ”¶ç›ŠçŽ‡,èµ„äº§è´Ÿå€ºçŽ‡,é”€å”®å¢žé•¿çŽ‡)~type2,data=y.2)
 summary(fit2,test=c("Wilks"))
 
-## µ¥ÒòËØ·½²î·ÖÎö
-y.3 <- as.data.frame(cbind(ÐÐÒµ,¾»×Ê²úÊÕÒæÂÊ,×Ü×Ê²ú±¨³êÂÊ,×Ê²ú¸ºÕ®ÂÊ,ÏúÊÛÔö³¤ÂÊ))
-type3 <- as.factor(y.3$ÐÐÒµ)
-fit3 <- manova(cbind(¾»×Ê²úÊÕÒæÂÊ,×Ü×Ê²ú±¨³êÂÊ,×Ê²ú¸ºÕ®ÂÊ,ÏúÊÛÔö³¤ÂÊ)~type3)
+## å•å› ç´ æ–¹å·®åˆ†æž
+y.3 <- as.data.frame(cbind(è¡Œä¸š,å‡€èµ„äº§æ”¶ç›ŠçŽ‡,æ€»èµ„äº§æŠ¥é…¬çŽ‡,èµ„äº§è´Ÿå€ºçŽ‡,é”€å”®å¢žé•¿çŽ‡))
+type3 <- as.factor(y.3$è¡Œä¸š)
+fit3 <- manova(cbind(å‡€èµ„äº§æ”¶ç›ŠçŽ‡,æ€»èµ„äº§æŠ¥é…¬çŽ‡,èµ„äº§è´Ÿå€ºçŽ‡,é”€å”®å¢žé•¿çŽ‡)~type3)
 summary.aov(fit3)
 
-## ÊÂºó±È½Ï
+## äº‹åŽæ¯”è¾ƒ
 library(agricolae)
 back.test <- function(i){
   attach(X)
-  fit <- aov(i~ÐÐÒµ,data=X)
-  #bonferroni¼ìÑé
-  out.LSD <- LSD.test(fit,"ÐÐÒµ",p.adj="bonferroni")
-  #SNK¼ìÑé
-  out.SNK <- SNK.test(fit,"ÐÐÒµ")
-  #TukeyHSD¼ìÑé
+  fit <- aov(i~è¡Œä¸š,data=X)
+  #bonferroniæ£€éªŒ
+  out.LSD <- LSD.test(fit,"è¡Œä¸š",p.adj="bonferroni")
+  #SNKæ£€éªŒ
+  out.SNK <- SNK.test(fit,"è¡Œä¸š")
+  #TukeyHSDæ£€éªŒ
   out.TUK=TukeyHSD(fit)
-  #Scheffe¼ìÑé
-  out.SHF <- scheffe.test(fit,"ÐÐÒµ")
+  #Scheffeæ£€éªŒ
+  out.SHF <- scheffe.test(fit,"è¡Œä¸š")
   
   par(mfrow=c(2,2))
   plot(out.LSD)
   plot(out.SNK)
   plot(out.TUK)
   plot(out.SHF)
-  list(LSD=out.LSD$group,SNK=out.SNK$group,TUK=out.TUK$ÐÐÒµ,SHF=out.SHF$group)
+  list(LSD=out.LSD$group,SNK=out.SNK$group,TUK=out.TUK$è¡Œä¸š,SHF=out.SHF$group)
 }
 
-back.test(¾»×Ê²úÊÕÒæÂÊ)
-back.test(×Ü×Ê²ú±¨³êÂÊ)
+back.test(å‡€èµ„äº§æ”¶ç›ŠçŽ‡)
+back.test(æ€»èµ„äº§æŠ¥é…¬çŽ‡)
