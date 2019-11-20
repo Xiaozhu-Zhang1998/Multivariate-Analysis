@@ -16,7 +16,7 @@ ________________________________________________
 * Chpater 9 - Linear Models
 * Final Project - Forest Fires
 
-For every chapter, there will be a html written with R Markdown, giving specific examples to analyze datasets with corresponding methods. A pdf format is also given for those who are not convenient to read html. Datasets are given in csv format.
+For every chapter, there will be a pdf converted from R Markdown, giving specific examples and explanations to analyze datasets with corresponding methods. Datasets are given in csv format. R codes are provided, and perticularly, if there are unreadable characters, please  click "Reopen with Encoding" in IDE RStudio and select "CP936 (System Default)". 
 
 ## Textbooks
 **21世纪统计学系列教材·多元统计分析**  
